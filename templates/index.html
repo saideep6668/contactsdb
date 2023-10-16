@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-6">
+        <h1>Contact List</h1>
+    </div>
+    <div class="col-md-6" >
+        <form class="input-group mb-3" action="/search" method="get">
+            <input class="form-control" type="text" name="q" placeholder="Search by First Name">
+            <input class="btn btn-primary" type="submit" value="Search">
+        </form>
+        
+    </div>
+</div>
+<div class="row">
+    {% for contact in contacts %}
+    <div class="col-md-4 mb-4 contact-card">
+        <div class="card card1" >
+            <a href="/details/{{ contact.id }}"><img src="{{ contact.image_url }}"  class=" rounded col-md-12" alt="{{ contact.name }}"></a>
+            <div class="card-body">
+                <h2 class="card-title contact-name">{{ contact.first_name }} </h2>
+                <!-- <a href="/details/{{ contact.id }}"  class="btn btn-primary">Details</a> -->
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
